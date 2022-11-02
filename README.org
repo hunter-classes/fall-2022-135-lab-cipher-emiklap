@@ -1,10 +1,10 @@
 * Fall 2021 - Lab Cipher
 
-* Last name:
+* Last name: Klapper
 
-* First name:
+* First name: Emily
 
-* GitHub username:
+* GitHub username: emiklap
 
 * Notes:
 
