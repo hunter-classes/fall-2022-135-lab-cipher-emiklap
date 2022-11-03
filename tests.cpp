@@ -26,5 +26,6 @@ TEST_CASE("Current Task: Solve decryption")
     CHECK( solve( encryptCaesar(cpp_textbook, 24), ref_freq_1) == cpp_textbook );
     CHECK( solve( encryptCaesar(star_lyrics, 18), ref_freq_2) == star_lyrics );
     CHECK( solve( encryptCaesar(cpp_textbook, 7), ref_freq_2) == cpp_textbook );
+    CHECK( solve( encryptCaesar(cpp_textbook, 0), ref_freq_2) == cpp_textbook );
 
 }
