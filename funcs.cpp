@@ -51,9 +51,36 @@ std::vector<float> createFreq(std::string str)
     return ref;
 }
 
-std::string solve(std::string encrypted_string)
+std::string solve(std::string encrypted_string, std::vector<float> ref_freq)
 {
-    return "";
+    std::string shifted_string = "";
+    std::vector<float> shifted_freq;
+    double best_shift = 1000; //arbitrary number
+    int best_shift_iteration = 0;
+
+    for (int i = 1; i < 26; i++)
+    {
+       shifted_string = encryptCaesar(encrypted_string, i);
+       shifted_freq = createFreq(shifted_string);
+
+        int counter = 0;
+        double avg_difference = 0;
+        //compare the frequency of letters of the shifted text and the refrence text
+        for (int j = 0; j < shifted_freq.size(); j++)
+        {
+            if (shifted_freq[j] != 0) {
+               avg_difference += shifted_freq.at(j) - ref_freq.at(j);
+               counter++;
+            }
+        }
+        avg_difference = avg_difference / counter;
+        if (avg_difference < best_shift)
+        {
+            best_shift = avg_difference;
+            best_shift_iteration = i;
+        }
+    }
+    return encryptCaesar(encrypted_string, best_shift_iteration);
 }
 
 //previous functions
